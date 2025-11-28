@@ -1,0 +1,25 @@
+github:
+  repo: "Owner/RepoName"
+  workflow_id: "build.yml"
+  token: "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+artifacts:
+  name: "BuildOutput"
+  files_to_extract:
+    - "Binaries/Win64/MyGame.exe"
+    - "Binaries/Win64/MyGame.pdb"
+  extract_mode: "copy"       # copy / move / custom
+
+output:
+  download_dir: "./downloads"
+  extract_dir: "./build"
+
+state:
+  last_artifact_id_file: "./last_id.txt"
+
+telegram:
+  enabled: true
+  bot_token: "1234567890:AAxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  chat_id: "-1001234567890"
+  message_on_download: "Downloaded and unpacked fresh artifact!"
+
