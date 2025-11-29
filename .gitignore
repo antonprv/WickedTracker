@@ -171,3 +171,15 @@ cython_debug/
 config/
 config/*
 config/*/*
+
+buildi/
+buildi/*
+build/*/*
+
+downloads/
+downloads/*
+downloads/*/*
+
+last_id.txt
+last_id_Content.txt
+last_id_Editor_(Windows).txt

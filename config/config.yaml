@@ -1,14 +1,16 @@
 github:
-  repo: "Owner/RepoName"
+  repo: "turanszkij/WickedEngine"
   workflow_id: "build.yml"
-  token: "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  token: "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"
 
 artifacts:
-  name: "BuildOutput"
-  files_to_extract:
-    - "Binaries/Win64/MyGame.exe"
-    - "Binaries/Win64/MyGame.pdb"
-  extract_mode: "copy"       # copy / move / custom
+  - name: "Content"
+    files_to_extract: "*"
+    extract_mode: "copy"
+
+  - name: "Editor (Windows)"
+    files_to_extract: "*"
+    extract_mode: "copy"
 
 output:
   download_dir: "./downloads"
@@ -19,7 +21,7 @@ state:
 
 telegram:
   enabled: true
-  bot_token: "1234567890:AAxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  chat_id: "-1001234567890"
+  bot_token: "8114307654:AAE-5yWPae2j1figslr4bbMEQMe52uObk3Q"
+  chat_id: "5304944012"
   message_on_download: "Downloaded and unpacked fresh artifact!"
 
