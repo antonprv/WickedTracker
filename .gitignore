@@ -180,6 +180,10 @@ downloads/
 downloads/*
 downloads/*/*
 
+code/
+code/*
+code/*/*
+
 last_id.txt
 last_id_Content.txt
 last_id_Editor_(Windows).txt

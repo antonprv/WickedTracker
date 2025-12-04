@@ -1,8 +1,9 @@
 github:
   repo: "turanszkij/WickedEngine"
   workflow_id: "build.yml"
-  token: "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"
+  token: ""
 
+#extract_mode can also be copy
 artifacts:
   - name: "Content"
     files_to_extract: "*"
@@ -15,13 +16,14 @@ artifacts:
 output:
   download_dir: "./downloads"
   extract_dir: "./build"
+  clone_dir: "./code"
 
 state:
   last_artifact_id_file: "./last_id.txt"
 
 telegram:
-  enabled: true
-  bot_token: "8114307654:AAE-5yWPae2j1figslr4bbMEQMe52uObk3Q"
-  chat_id: "5304944012"
+  enabled: false 
+  bot_token: ""
+  chat_id: ""
   message_on_download: "Downloaded and unpacked fresh artifact!"
 

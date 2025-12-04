@@ -4,7 +4,7 @@ import yaml
 import zipfile
 import io
 import shutil
-
+import subprocess
 
 def load_config():
     print("loading config...")
@@ -109,6 +109,19 @@ def send_telegram_message(cfg, text):
     except Exception as e:
         print("Failed to send telegram message:", e)
 
+def clone_and_checkout(cfg, commit_id):
+    clone_dir = cfg["output"].get("clone_dir", "./repo")
+    repo_url = f"https://github.com/{cfg['github']['repo']}.git"
+
+    if not os.path.exists(clone_dir):
+        os.makedirs(clone_dir, exist_ok=True)
+
+    print(f"Cloning repository {cfg['github']['repo']} into {clone_dir} without checkout...")
+    subprocess.run(["git", "clone", "--no-checkout", repo_url, clone_dir], check=True)
+
+    print(f"Checking out commit {commit_id}...")
+    subprocess.run(["git", "-C", clone_dir, "checkout", commit_id], check=True)
+
 
 def main():
     cfg = load_config()
@@ -149,6 +162,11 @@ def main():
         base_msg = cfg["telegram"].get("message_on_download", f"Downloaded {artifact_cfg['name']}")
         full_msg = f"{base_msg}\nCommit: <code>{commit_id}</code>\nMessage: {commit_msg}"
         send_telegram_message(cfg, full_msg)
+
+    commit_id = run.get("head_commit", {}).get("id", None)
+    if commit_id:
+        clone_and_checkout(cfg, commit_id)
+        send_telegram_message(cfg, f"Received code for commit {commit_id}")
 
 if __name__ == "__main__":
     main()
