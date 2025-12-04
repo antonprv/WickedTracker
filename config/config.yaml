@@ -1,7 +1,7 @@
 github:
   repo: "turanszkij/WickedEngine"
   workflow_id: "build.yml"
-  token: "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"
+  token: ""
 
 artifacts:
   - name: "Content"
@@ -22,7 +22,7 @@ state:
 
 telegram:
   enabled: true
-  bot_token: "8114307654:AAE-5yWPae2j1figslr4bbMEQMe52uObk3Q"
-  chat_id: "5304944012"
+  bot_token: ""
+  chat_id: ""
   message_on_download: "Downloaded and unpacked fresh artifact!"
 
